@@ -2,7 +2,7 @@
 
 # php-interfaces
 
-php interfaces for my projects 
+php interfaces for my OOP projects 
 
 ## Assocify
 

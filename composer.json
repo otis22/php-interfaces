@@ -18,17 +18,18 @@
         "phpstan/phpstan": "^0.12.19",
         "sensiolabs/security-checker": "^6.0",
         "wapmorgan/php-code-fixer": "^2.0",
-        "php-coveralls/php-coveralls": "^2.2"
+        "phpunit/phpunit": "^9.1"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Otis22\\VetmanagerUrl\\": "tests"
+        }
     },
     "scripts": {
-        "static": [
-            "vendor/bin/phpcs --ignore-annotations --standard=PSR12 src && vendor/bin/phpcf src && vendor/bin/phpstan analyse --level=max src"
-        ],
-        "check-composer": [
-            "composer validate && vendor/bin/security-checker security:check"
-        ],
-        "all-tests": [
-            "composer check-composer && composer static"
-        ]
+        "unit": "vendor/bin/phpunit",
+        "check-static-analyze": "vendor/bin/phpstan analyse --level=max src tests",
+        "check-style": "vendor/bin/phpcs --ignore-annotations --standard=PSR12 src tests && vendor/bin/phpcf tests src",
+        "security": "vendor/bin/security-checker security:check",
+        "check-all": "composer validate && composer security && composer check-style && composer check-static-analyze && composer unit"
     }
 }

@@ -25,7 +25,13 @@ jobs:
           composer install
       - name: Security check
         run: |
-          vendor/bin/security-checker security:check
-      - name: Static analyzes
+          composer security
+      - name: Check code standart
         run: |
-          composer static
+          composer check-style
+      - name: Analyze code
+        run: |
+          composer check-static-analyze
+      - name: Run tests
+        run: |
+          composer unit

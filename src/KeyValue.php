@@ -11,7 +11,7 @@ namespace Otis22\PhpInterfaces;
 interface KeyValue
 {
     /**
-     * @return array<string, string>
+     * @return array<string, mixed>
      */
     public function asKeyValue(): array;
 }
